@@ -1,0 +1,53 @@
+/*
+ * 
+ * 
+ * 
+This is the arduino code
+This is free to use :-) (I don't know why but i love writing this line)
+
+Hello everbody i am satinder singh, i am acomputer engineering student at Army Institute of Technology in pune
+This is my code for identifying basic red,green and blue color and connecting this with a servo to project this physically
+
+if you don't have knowledge about processing and want to learn about it i would recommend you Daniel shiffmans channel "The Coding Train"
+
+The link to youtube video for this project is : 
+
+the components required are
+arduino uno
+jumper wires
+servo
+motor shield(can work without it also)
+laptop with processing and arduino installed
+
+just connect VCC,GROUND to GND and 5V of the arduino
+and connect the third pin of servo to any digital pin
+
+
+
+You can check the other file for processing code
+
+*/
+
+#include<Servo.h>                            //including the library for servo
+Servo x;                                     //creating a object x of class Servo
+char y;                                      //variable y of char type
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600);                          //starting the Serial connection with a baud rate of 9600
+x.attach(11);                                 //attaching the servo to pin number 11(yours may vary)
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+if(Serial.available()>0)                      //checking if there is any data coming Serially
+{
+  
+   y=Serial.read();                           //storing the data received in y
+  if(y=='1')                                   //checking if value received is 1 and rotating the servo
+  x.write(180);                                 
+  if(y=='2')                                  //checking if value received is 2 and rotating the servo
+  x.write(85);
+  if(y=='3')                                  //checking if value received is 3 and rotating the servo
+  x.write(7);
+  }
+}
